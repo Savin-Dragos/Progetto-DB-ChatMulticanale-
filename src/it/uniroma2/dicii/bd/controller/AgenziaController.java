@@ -16,7 +16,7 @@ public class AgenziaController  implements Controller{
     @Override
     public void start() {
         try {
-            ConnectionFactory.changeRole(Role.AGENZIA);
+            ConnectionFactory.changeRole(Role.AMMINISTRATORE);
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }

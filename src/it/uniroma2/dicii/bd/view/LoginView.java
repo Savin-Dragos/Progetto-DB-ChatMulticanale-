@@ -9,11 +9,13 @@ import java.io.InputStreamReader;
 public class LoginView {
     public static Credentials authenticate() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("username: ");
-        String username = reader.readLine();
+        System.out.print("nome: ");
+        String nome = reader.readLine();
+        System.out.print("cognome: ");
+        String cognome = reader.readLine();
         System.out.print("password: ");
         String password = reader.readLine();
 
-        return new Credentials(username, password, null);
+        return new Credentials(nome,cognome, password, null);
     }
 }

@@ -19,7 +19,7 @@ public class LoginController implements Controller {
         }
 
         try {
-            cred = new LoginProcedureDAO().execute(cred.getUsername(), cred.getPassword());
+            cred = new LoginProcedureDAO().execute(cred.getNome(), cred.getCognome(), cred.getPassword());
         } catch(DAOException e) {
             throw new RuntimeException(e);
         }

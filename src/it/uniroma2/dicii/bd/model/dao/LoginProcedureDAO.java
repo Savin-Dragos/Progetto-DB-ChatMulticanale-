@@ -10,23 +10,24 @@ public class LoginProcedureDAO implements GenericProcedureDAO<Credentials> {
 
     @Override
     public Credentials execute(Object... params) throws DAOException {
-        String username = (String) params[0];
-        String password = (String) params[1];
+        String nome = (String) params[0];
+        String cognome = (String) params[1];
+        String password = (String) params[2];
         int role;
 
         try {
             Connection conn = ConnectionFactory.getConnection();
-            CallableStatement cs = conn.prepareCall("{call login(?,?,?)}");
-            cs.setString(1, username);
-            cs.setString(2, password);
-            cs.registerOutParameter(3, Types.NUMERIC);
+            CallableStatement cs = conn.prepareCall("{call login(?,?,?,?)}");
+            cs.setString(1, nome);
+            cs.setString(2, cognome);
+            cs.setString(3, password);
+            cs.registerOutParameter(4, Types.NUMERIC);
             cs.executeQuery();
-            role = cs.getInt(3);
+            role = cs.getInt(4);
         } catch(SQLException e) {
             throw new DAOException("Login error: " + e.getMessage());
         }
 
-
-        return new Credentials(username, password, Role.fromInt(role));
+        return new Credentials(nome, cognome, password, Role.fromInt(role));
     }
 }

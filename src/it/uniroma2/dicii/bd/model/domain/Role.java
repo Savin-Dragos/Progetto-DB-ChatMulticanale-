@@ -2,7 +2,8 @@ package it.uniroma2.dicii.bd.model.domain;
 
 public enum Role {
     AMMINISTRATORE(1),
-    AGENZIA(2);
+    CAPOPROGETTO(2),
+    DIPENDENTE(3);
 
     private final int id;
 
